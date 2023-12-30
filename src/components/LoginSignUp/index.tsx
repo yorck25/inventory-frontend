@@ -1,25 +1,46 @@
-import React, { useState } from 'react'; 
-import style from './style.module.scss';
-const Login = () => {
+import React, { useState, FormEvent, ChangeEvent } from 'react';
+import styles from './style.module.scss';
 
-    return ( 
-            <div className={style.container}>
-            <div className="header">
-            <div className="text">
-                
-            </div>
-            <div className="underline"></div> 
-            <div className="inputs">
-                <input type="text" placeholder ="Name" />
-            </div>
-            <div className= "input">
-                <input type="password" placeholder="Password"/>
-                </div>
-        </div>
-        <div className = "submit-container"></div>
-            <div className="submit">Login</div>
-        </div>
-    );
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    //Anmeldedaten müssen noch vom Server geklaut werden 
+    if (email === 'user@example.com' && password === 'passwort') {
+      
+    } else {
+      alert('Login fehlgeschlagen. Überprüfe Email und Passwort.');
+    }
+  };
+
+  return (
+    <div className={styles.login_container}>
+      <h2>Inventory</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Passwort:
+          <input
+            type="password"
+            value={password}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 };
 
-export default Login
+export default Login;
