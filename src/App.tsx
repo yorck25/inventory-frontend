@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from 'react-router-dom';
+import Login from './components/loginSignUp';
 
 function App() {
     const router = createBrowserRouter(
@@ -21,7 +22,7 @@ export default App;
 function Placeholder() {
   return (
     <div>
-      Hello world
+        <Login></Login>
     </div>
   )
 }

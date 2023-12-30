@@ -1,9 +1,9 @@
 import React, { useState } from 'react'; 
-import './style.module.scss';
-const login = () => {
+import style from './style.module.scss';
+const Login = () => {
 
     return ( 
-            <div className='container'>
+            <div className={style.container}>
             <div className="header">
             <div className="text">
                 
@@ -22,4 +22,4 @@ const login = () => {
     );
 };
 
-export default login
+export default Login
