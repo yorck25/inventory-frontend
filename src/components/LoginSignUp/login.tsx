@@ -1,5 +1,5 @@
-import React, { useState } from 'react' 
-import './style.module.scss'
+import React, { useState } from 'react'; 
+import './style.module.scss';
 const login = () => {
 
     return ( 
