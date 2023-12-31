@@ -4,6 +4,14 @@ import { InventoryCreateItemModal } from '../inventoryCreateItemModal';
 import "@fontsource/roboto"; 
 
 export const InventoryHeader = () => {
+
+  <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      
   const [isHiddenState, setIsHidden] = useState<boolean>(false);
   
   const toggle = () => setIsHidden(!isHiddenState);

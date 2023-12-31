@@ -5,7 +5,7 @@
     bottom: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.5);
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
   }
   
   .content {
@@ -22,11 +22,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     
     h1 {
       margin-top: 0;
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
     }
   }
   
@@ -34,18 +34,18 @@
     width: 100%;
     max-width: 300px;
     margin-bottom: 10px;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
   }
   
   .block {
     display: flex;
     flex-direction: column;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
   }
   
   .label {
     padding-top: 10px;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
   }
   
   .button {
@@ -57,7 +57,7 @@
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
   
     &:hover {
       background-color: #2980b9;

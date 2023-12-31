@@ -1,7 +1,7 @@
 .inventory_item_list{
     margin: 25px 0;
     background-color: rgb(255, 255, 255);
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
 
 
     .inventory_list_item{
@@ -9,34 +9,34 @@
         background-color: rgb(194, 194, 194);
         display: flex;
         justify-content: space-between;
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
 
         .item_info_container{
             display: flex;
-            font-family: "Roboto";
+            font-family: "Roboto", sans-serif;
 
             .item_image{
                 margin: 0 25px 0 0px;
                 height: fit-content;
                 width: 50px;
                 aspect-ratio: 1⁄1;
-                font-family: "Roboto";
+                font-family: "Roboto", sans-serif;
             }
 
             .item_id{
                 margin-left: 10px;
-                font-family: "Roboto";
+                font-family: "Roboto",  sans-serif;
             }
 
             .item_name{
                 margin-left: 10px;
-                font-family: "Roboto";
+                font-family: "Roboto", sans-serif;
             }
         }
 
         .open_detail_button{
             margin: 0 15px;
-            font-family: "Roboto";
+            font-family: "Roboto", sans-serif;
         }
     }
 }
