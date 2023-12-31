@@ -1,6 +1,7 @@
 import style from './style.module.scss'
 import dummyImage from './2188303_P.webp'
 import { useState } from 'react';
+import "@fontsource/roboto";
 
 interface IItemModel {
     id: number,

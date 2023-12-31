@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import style from './style.module.scss';
 import { InventoryCreateItemModal } from '../inventoryCreateItemModal';
+import "@fontsource/roboto"; 
 
 export const InventoryHeader = () => {
   const [isHiddenState, setIsHidden] = useState<boolean>(false);
