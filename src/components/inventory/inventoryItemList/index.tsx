@@ -3,6 +3,13 @@ import dummyImage from './2188303_P.webp'
 import { useState } from 'react';
 import "@fontsource/roboto";
 
+<head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+
 interface IItemModel {
     id: number,
     item: string,
@@ -16,6 +23,7 @@ interface IItemModel {
 }
 
 const dummyItems: IItemModel[] = [
+    
     {
         id: 1,
         item: "Xbox",

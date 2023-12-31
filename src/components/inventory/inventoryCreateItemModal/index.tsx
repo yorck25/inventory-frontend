@@ -1,9 +1,18 @@
 import { useState } from 'react';
 import style from './style.module.scss';
-import "@fontsource/roboto";
+
+
+
 
 export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => {
 
+    <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      
     const [itemName, setItemName] = useState('');
     const [BuyQuantity, setBuyQuantity] = useState('');
     const [Cost, setCost] = useState('');
