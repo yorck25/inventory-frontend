@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import style from './style.module.scss';
 
-
-
 export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => {
 
     const [itemName, setItemName] = useState('');
-    const [BuyQuantity, setBuyQuantity] = useState('');
     const [Cost, setCost] = useState('');
     const [Revenue, setRevenue] = useState('');
-    const [Platform, setPlatform] = useState('');
     const [Date_bought, setDate_bought] = useState('');
     const [Date_sold, setDate_sold] = useState('');
     const [memo, setmemo] = useState('');
 
+    const [errorMsg, setErrorMsg] = useState<undefined | string>(undefined);
 
     var myHeaders = new Headers();
         myHeaders.append("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTkwZTJhMWIwOGZhMjc3MjhhNTA4MTAiLCJpYXQiOjE3MDM5OTkzNDQ3NTEsImV4cCI6MTcwMzk5OTQzMTE1MX0.BfmBIRhb0j9_cMyWqJv828aSaEPmj0NCPO - B2RMT02c");
@@ -34,31 +31,33 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
         })
     };
 
-    interface Item {
-        item: string,
-        buy: number,
-        sell: number,
-        buyindate: string,
-        selldate: string,
-        memo: string
-    }
+    const saveNewItem = () => {
+        setErrorMsg(undefined);
 
-    const toggle2 = () => {
+        if(itemName === '' || Cost === '' || Revenue === '' || Date_bought === '' || Date_sold === '' || memo === '') return setErrorMsg("Please fill out all fields");
+
         fetch("http://localhost:8080/safeitem", requestOptions) 
-        .then(response => response.status)
-        .then(result => console.log(result))
+        .then(response =>{
+            if (response.status != 200) return setErrorMsg("Something went wrong");
+
+            setItemName('');
+            setCost('');
+            setRevenue('');
+            setDate_bought('');
+            setDate_sold('');
+            setmemo('');
+
+            toggle();
+        })
         .catch(error => console.log('error', error));
-        toggle();
-
     }
-
-    
 
     return (
         <div className={style.inventory_create_modal}>
             <div onClick={() => toggle()} className={style.modal_blocker} />
             <div className={style.content}>
                 <h1>new products?</h1>
+                {errorMsg  && <p>{errorMsg}</p>}
                 <div className={style.block}>
                     <label className={style.label} > 
                         Item:
@@ -111,7 +110,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
 
                 </div>
 
-                <button onClick={() => toggle2()} className={style.button}>click me</button>
+                <button onClick={() => saveNewItem()} className={style.button}>click me</button>
             </div>
         </div>
     );
