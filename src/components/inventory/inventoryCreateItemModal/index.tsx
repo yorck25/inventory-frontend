@@ -36,7 +36,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
 
         if(itemName === '' || Cost === '' || Revenue === '' || Date_bought === '' || Date_sold === '' || memo === '') return setErrorMsg("Please fill out all fields");
 
-        fetch("http://localhost:8080/safeitem", requestOptions) 
+        fetch("http://localhost:8080/item", requestOptions) 
         .then(response =>{
             if (response.status != 200) return setErrorMsg("Something went wrong");
 
