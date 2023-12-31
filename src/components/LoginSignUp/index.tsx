@@ -1,15 +1,18 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './style.module.scss';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     //Anmeldedaten müssen noch vom Server geklaut werden 
     if (email === 'user@example.com' && password === 'passwort') {
-      
+      navigate('/inventory');
+     
     } else {
       alert('Login fehlgeschlagen. Überprüfe Email und Passwort.');
     }
