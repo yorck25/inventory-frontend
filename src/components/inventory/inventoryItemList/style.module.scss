@@ -1,0 +1,35 @@
+.inventory_item_list{
+    margin: 25px 0;
+    background-color: rgb(255, 255, 255);
+
+
+    .inventory_list_item{
+        margin: 25px 15px;
+        background-color: rgb(194, 194, 194);
+        display: flex;
+        justify-content: space-between;
+
+        .item_info_container{
+            display: flex;
+
+            .item_image{
+                margin: 0 25px 0 0px;
+                height: fit-content;
+                width: 50px;
+                aspect-ratio: 1⁄1;
+            }
+
+            .item_id{
+                margin-left: 10px;
+            }
+
+            .item_name{
+                margin-left: 10px;
+            }
+        }
+
+        .open_detail_button{
+            margin: 0 15px;
+        }
+    }
+}
