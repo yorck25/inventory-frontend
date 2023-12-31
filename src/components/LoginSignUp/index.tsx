@@ -27,6 +27,8 @@ const Login = () => {
   };
 
   return (
+    
+
     <div className={styles.login_container}>
       <h2>Inventory</h2>
       <form onSubmit={handleSubmit}>
@@ -53,7 +55,7 @@ const Login = () => {
 
         
             
-        <button className={styles.buttonsubmit} type="submit">Login</button>
+        <button className={styles.button_submit} type="submit">Login</button>
       </form>
     </div>
   );
