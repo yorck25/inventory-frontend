@@ -15,15 +15,23 @@ const Login = () => {
     setPasswordShown(!passwordShown);
   };
 
+  var myHeaders = new Headers();
+  myHeaders.append("username", email);
+  myHeaders.append("password", password);
+
+  const requestOptions: RequestInit = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     //Anmeldedaten müssen noch vom Server geklaut werden 
-    if (email === 'user@example.com' && password === 'passwort') {
-      navigate('/inventory');
-     
-    } else {
-      alert('Login fehlgeschlagen. Überprüfe Email und Passwort.');
-    }
+    fetch("http://localhost:8080/login", requestOptions)
+      .then(response => response.status)
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   };
 
   return (
