@@ -51,7 +51,7 @@ const Login = () => {
           
         </label>
         <label>
-          Passwort:
+          Password:
           <input className={styles.password_container}
             type = {passwordShown ? "text" : "password"} 
             value={password}
