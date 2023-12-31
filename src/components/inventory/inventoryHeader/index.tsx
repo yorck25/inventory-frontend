@@ -9,7 +9,7 @@ export const InventoryHeader = () => {
 
   return (
     <div className={style.inventory_header}>
-      <button onClick={toggle}>Add new item</button>
+      <button className={style.button_add} onClick={toggle}>Add new item</button>
       {isHiddenState && <InventoryCreateItemModal toggle={() => toggle()} />}
     </div>
   );
