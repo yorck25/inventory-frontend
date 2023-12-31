@@ -2,15 +2,10 @@ import React, { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './style.module.scss';
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
-import "@fontsource/roboto";
 
 
-<head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+
+
 
 
 const Login = () => {
