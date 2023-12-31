@@ -28,10 +28,11 @@ const Login = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    //Anmeldedaten müssen noch vom Server geklaut werden 
+    
     fetch("http://localhost:8080/login", requestOptions)
       .then(response => response.status)
       .then(result => console.log(result))
+       .then(() => navigate("/inventory"))
       .catch(error => console.log('error', error));
   };
 
@@ -44,7 +45,7 @@ const Login = () => {
         <label>
           Email:
           <input
-            type = "email"
+            type = "text"
             value={email}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             required
