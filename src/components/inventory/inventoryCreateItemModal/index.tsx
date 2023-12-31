@@ -17,8 +17,8 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
             <div onClick={() => toggle()} className={style.modal_blocker} />
             <div className={style.content}>
                 <h1>new products?</h1>
-                <div>
-                    <label> 
+                <div className={style.block}>
+                    <label className={style.label} > 
                         Item:
                         <input 
                             type = "text"
@@ -26,7 +26,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                             onChange={(e) => setItemName(e.target.value)}
                             />
                     </label>
-                    <label> 
+                    <label className={style.label}> 
                         Cost:
                         <input 
                             type ="Number"
@@ -34,7 +34,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                             onChange={(e) => setCost(e.target.value)}
                             />
                     </label>
-                    <label> 
+                    <label className={style.label}> 
                         Revenue:
                         <input 
                             type ="Number"
@@ -42,7 +42,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                             onChange={(e) => setRevenue(e.target.value)}
                             />
                     </label>
-                    <label> 
+                    <label className={style.label}> 
                         Bought when?
                         <input 
                             type ="Date"
@@ -50,7 +50,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                             onChange={(e) => setDate_bought(e.target.value)}
                             />
                     </label>
-                    <label> 
+                    <label className={style.label}> 
                         Sold when?
                         <input 
                             type ="Date"
@@ -58,7 +58,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                             onChange={(e) => setDate_sold(e.target.value)}
                             />
                     </label>
-                    <label> 
+                    <label className={style.label}> 
                         Memo:
                         <input 
                             type ="text"
@@ -69,7 +69,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
 
                 </div>
 
-                <button onClick={() => toggle()}>click me</button>
+                <button onClick={() => toggle()} className={style.button}>click me</button>
             </div>
         </div>
     );
