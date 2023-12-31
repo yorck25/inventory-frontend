@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './style.module.scss';
-import { useNavigate } from "react-router-dom";0
+import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 
 
@@ -42,18 +42,18 @@ const Login = () => {
         </label>
         <label>
           Passwort:
-          <input
+          <input className={styles.password_container}
             type = {passwordShown ? "text" : "password"} 
             value={password}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
             required
           />
-          <button type="button" onClick={togglePassword}> <FaEye/> </button>
+          <button className={styles.buttoneye} type="button" onClick={togglePassword}> <FaEye/>  </button>
         </label>
 
         
             
-        <button type="submit">Login</button>
+        <button className={styles.buttonsubmit} type="submit">Login</button>
       </form>
     </div>
   );
