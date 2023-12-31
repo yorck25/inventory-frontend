@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import style from './style.module.scss';
 
+
+
 export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => {
 
     const [itemName, setItemName] = useState('');

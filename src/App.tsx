@@ -3,6 +3,7 @@ import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} fr
 import Login from './components/loginSignUp';
 import {InventoryPage} from "./pages/inventoryPage";
 
+
 function App() {
     const router = createBrowserRouter(
         createRoutesFromElements([
