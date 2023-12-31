@@ -13,6 +13,46 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
     const [Date_sold, setDate_sold] = useState('');
     const [memo, setmemo] = useState('');
 
+
+    var myHeaders = new Headers();
+        myHeaders.append("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTkwZTJhMWIwOGZhMjc3MjhhNTA4MTAiLCJpYXQiOjE3MDM5OTkzNDQ3NTEsImV4cCI6MTcwMzk5OTQzMTE1MX0.BfmBIRhb0j9_cMyWqJv828aSaEPmj0NCPO - B2RMT02c");
+        myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions: RequestInit = {
+        method: 'POST',
+        headers: myHeaders,
+
+        redirect: 'follow',
+        body: JSON.stringify({
+            item: itemName,
+            buy: Cost,
+            sell: Revenue,
+            buyindate: Date_bought,
+            selldate: Date_sold,
+            memo: memo
+        })
+    };
+
+    interface Item {
+        item: string,
+        buy: number,
+        sell: number,
+        buyindate: string,
+        selldate: string,
+        memo: string
+    }
+
+    const toggle2 = () => {
+        fetch("http://localhost:8080/safeitem", requestOptions) 
+        .then(response => response.status)
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+        toggle();
+
+    }
+
+    
+
     return (
         <div className={style.inventory_create_modal}>
             <div onClick={() => toggle()} className={style.modal_blocker} />
@@ -70,8 +110,9 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
 
                 </div>
 
-                <button onClick={() => toggle()} className={style.button}>click me</button>
+                <button onClick={() => toggle2()} className={style.button}>click me</button>
             </div>
         </div>
     );
 };
+
