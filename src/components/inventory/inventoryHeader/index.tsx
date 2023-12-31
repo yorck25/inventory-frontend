@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import style from './style.module.scss';
+import { InventoryCreateItemModal } from '../inventoryCreateItemModal';
+
 export const InventoryHeader = () => {
-    return (
-        <div className={style.inventory_header}>
-            <button>Add item</button>
-        </div>
-    )
-}
+  const [isHiddenState, setIsHidden] = useState<boolean>(false);
+  
+  const toggle = () => setIsHidden(!isHiddenState);
+
+  return (
+    <div className={style.inventory_header}>
+      <button onClick={toggle}>Add new item</button>
+      {isHiddenState && <InventoryCreateItemModal toggle={() => toggle()} />}
+    </div>
+  );
+};
