@@ -2,11 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './style.module.scss';
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
-
-
-
-
-
+import { useHelperContext } from '../../lib/helperContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -28,14 +24,23 @@ const Login = () => {
     redirect: 'follow'
   };
 
+  const { token, setToken } = useHelperContext();
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
     fetch("http://localhost:8080/login", requestOptions)
-      .then(response => response.status)
-      .then(result => console.log(result))
-       .then(() => navigate("/inventory"))
-      .catch(error => console.log('error', error));
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+
+    return response.text();
+  })
+  .then(data => {
+    console.log(data);
+    setToken(data);
+    navigate('/inventory');
+  })
+  .catch(error => console.error('There was an error:', error));
   };
 
   return (
@@ -65,8 +70,6 @@ const Login = () => {
           <button className={styles.buttoneye} type="button" onClick={togglePassword}> <FaEye/>  </button>
         </label>
 
-        
-            
         <button className={styles.button_submit} type="submit">Login</button>
       </form>
     </div>
