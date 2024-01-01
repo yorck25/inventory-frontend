@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --blue: #1e90ff;
+        --backgorund: #ffffff;
+      }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --blue: #1e90ff;
+        --backgorund: #343434;
+      }
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--backgorund);
+}
