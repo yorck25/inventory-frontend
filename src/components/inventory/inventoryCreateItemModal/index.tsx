@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import style from './style.module.scss';
+import { ModalHeader } from '../../modalHeader';
 
 export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => {
 
@@ -56,7 +57,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
         <div className={style.inventory_create_modal}>
             <div onClick={() => toggle()} className={style.modal_blocker} />
             <div className={style.content}>
-                <h1>new products?</h1>
+                <ModalHeader title={"Create new Item"} toggleFunc={() => toggle()}/>
                 {errorMsg  && <p>{errorMsg}</p>}
                 <div className={style.block}>
                     <label className={style.label} > 

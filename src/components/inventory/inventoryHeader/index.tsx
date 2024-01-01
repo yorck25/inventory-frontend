@@ -4,9 +4,6 @@ import { InventoryCreateItemModal } from '../inventoryCreateItemModal';
 
 
 export const InventoryHeader = () => {
-
-  
-
   const [isHiddenState, setIsHidden] = useState<boolean>(false);
   
   const toggle = () => setIsHidden(!isHiddenState);

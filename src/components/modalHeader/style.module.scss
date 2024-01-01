@@ -1,0 +1,21 @@
+.modal_header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .header_title{
+        margin-left: 25px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        
+        color: var( --main-font-color);
+    }
+
+    .close_button{
+        border: none;
+        margin-right: 25px;
+        padding: 0;
+        background-color: rgb(124, 124, 124);
+    }
+}
+

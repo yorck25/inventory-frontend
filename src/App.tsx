@@ -8,7 +8,7 @@ function App() {
             <Route path='/' element={<Placeholder />} />,
             <Route path='/inventory' element={<InventoryPage />} />,
         ])
-    )
+    );
 
     return (
         <div className="App">
