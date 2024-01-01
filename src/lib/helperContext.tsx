@@ -1,10 +1,10 @@
-// your context file (HelperContext.tsx)
-
-import React, { createContext, useState, useContext, FC, ReactNode } from 'react';
+import React, { createContext, useState, FC, ReactNode, useContext } from 'react';
 
 type HelperContextProps = {
   token: string | undefined;
   setToken: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setTokenLocalStorage: (token: string) => void;
+  getTokenLocalStorage: () => string | null;
 };
 
 const HelperContext = createContext<HelperContextProps | undefined>(undefined);
@@ -12,9 +12,20 @@ const HelperContext = createContext<HelperContextProps | undefined>(undefined);
 export const HelperContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [token, setToken] = useState<string | undefined>(undefined);
 
+  const setTokenLocalStorage = (token: string) => {
+    localStorage.setItem('token', token);
+    setToken(token);
+  };
+
+  const getTokenLocalStorage = () => {
+    return localStorage.getItem('token');
+  };
+
   const helperContextValue: HelperContextProps = {
     token,
     setToken,
+    setTokenLocalStorage,
+    getTokenLocalStorage,
   };
 
   return (
@@ -23,6 +34,9 @@ export const HelperContextProvider: FC<{ children: ReactNode }> = ({ children })
     </HelperContext.Provider>
   );
 };
+
+export default HelperContext;
+
 
 export const useHelperContext = () => {
   const context = useContext(HelperContext);

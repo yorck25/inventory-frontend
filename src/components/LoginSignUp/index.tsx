@@ -1,18 +1,18 @@
-import React, { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './style.module.scss';
 import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { useHelperContext } from '../../lib/helperContext';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { setToken, setTokenLocalStorage } = useHelperContext();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  
   const [passwordShown, setPasswordShown] = useState(false);
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
+
+  const togglePassword = () => setPasswordShown(!passwordShown);
 
   var myHeaders = new Headers();
   myHeaders.append("username", email);
@@ -24,8 +24,6 @@ const Login = () => {
     redirect: 'follow'
   };
 
-  const { token, setToken } = useHelperContext();
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
@@ -35,17 +33,16 @@ const Login = () => {
 
     return response.text();
   })
-  .then(data => {
-    console.log(data);
-    setToken(data);
+  .then(token => {
+    console.log('Token:', token);
+    setTokenLocalStorage(token);
+    setToken(token);
     navigate('/inventory');
   })
   .catch(error => console.error('There was an error:', error));
   };
 
   return (
-    
-
     <div className={styles.login_container}>
       <h2>Inventory</h2>
       <form onSubmit={handleSubmit}>
