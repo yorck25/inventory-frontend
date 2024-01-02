@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import style from './style.module.scss';
 import { ModalHeader } from '../../modalHeader';
+import { useHelperContext } from '../../../lib/helperContext';
 
 export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => {
-
+    const { getTokenLocalStorage } = useHelperContext();
+    
     const [itemName, setItemName] = useState('');
     const [Cost, setCost] = useState('');
     const [Revenue, setRevenue] = useState('');
     const [Date_bought, setDate_bought] = useState('');
     const [Date_sold, setDate_sold] = useState('');
     const [memo, setmemo] = useState('');
-
     const [errorMsg, setErrorMsg] = useState<undefined | string>(undefined);
 
     var myHeaders = new Headers();
-        myHeaders.append("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTkwZTJhMWIwOGZhMjc3MjhhNTA4MTAiLCJpYXQiOjE3MDM5OTkzNDQ3NTEsImV4cCI6MTcwMzk5OTQzMTE1MX0.BfmBIRhb0j9_cMyWqJv828aSaEPmj0NCPO - B2RMT02c");
+        myHeaders.append("token", getTokenLocalStorage()?.toString() || '');
         myHeaders.append("Content-Type", "application/json");
 
     const requestOptions: RequestInit = {

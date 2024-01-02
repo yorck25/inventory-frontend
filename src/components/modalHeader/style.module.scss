@@ -1,6 +1,7 @@
 .modal_header{
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     .header_title{
@@ -12,10 +13,13 @@
     }
 
     .close_button{
+        height: 35px;
+        aspect-ratio: 1/1;
+        border-radius: 360px;
         border: none;
         margin-right: 25px;
         padding: 0;
-        background-color: rgb(124, 124, 124);
+        background-color: rgb(173, 173, 173);
     }
 }
 
