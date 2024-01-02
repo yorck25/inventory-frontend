@@ -4,7 +4,7 @@ type HelperContextProps = {
   token: string | undefined;
   setToken: React.Dispatch<React.SetStateAction<string | undefined>>;
   setTokenLocalStorage: (token: string) => void;
-  getTokenLocalStorage: () => string | null;
+  getTokenLocalStorage: () => string;
 };
 
 const HelperContext = createContext<HelperContextProps | undefined>(undefined);
@@ -18,7 +18,9 @@ export const HelperContextProvider: FC<{ children: ReactNode }> = ({ children })
   };
 
   const getTokenLocalStorage = () => {
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if (token != null) return token;
+    return '';
   };
 
   const helperContextValue: HelperContextProps = {
@@ -36,7 +38,6 @@ export const HelperContextProvider: FC<{ children: ReactNode }> = ({ children })
 };
 
 export default HelperContext;
-
 
 export const useHelperContext = () => {
   const context = useContext(HelperContext);
