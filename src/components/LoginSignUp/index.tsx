@@ -34,7 +34,6 @@ const Login = () => {
     return response.text();
   })
   .then(token => {
-    console.log('Token:', token);
     setTokenLocalStorage(token);
     setToken(token);
     navigate('/inventory');

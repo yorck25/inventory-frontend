@@ -56,7 +56,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                 {errorMsg && <p>{errorMsg}</p>}
                 <div className={style.block}>
                     <label className={style.label} >
-                        Item:
+                        Item name:
                         <input className={style.input}
                             type="text"
                             value={itemName}
