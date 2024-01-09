@@ -1,0 +1,60 @@
+.main_page_desktop {
+    display: flex;
+    height: 100vh;
+
+    .sidebar {
+        width: 15vw;
+        background-color: rgb(235, 235, 235);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+
+        .logo_container {
+            height: 20vh;
+            margin: 25px 0px;
+            display: flex;
+            justify-content: center;
+
+            .logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                aspect-ratio: 1/1;
+                object-fit: scale-down;
+                background-color: rgb(59, 134, 209);
+            }
+        }
+
+        .navigation_stacks {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .top_navigation_list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    padding: 10px;
+                }
+            }
+
+            .bottom_navigation_list {
+                position: sticky;
+                list-style: none;
+                padding: 0;
+                margin-bottom: 25px;
+
+                li {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+
+    .content {
+        width: 85vw;
+    }
+}

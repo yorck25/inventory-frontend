@@ -1,23 +1,22 @@
 .inventory_header{
+  height: 7.5vh;
   background: rgb(255, 0, 0);
   display: flex;
   justify-content: end;
   
-}
-
-.button_add {
-  margin-top: 0px;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  .button_add {
+    margin-top: 0px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
   
-
-  &:hover {
-    background-color: #2980b9;
+    &:hover {
+      background-color: #2980b9;
+    }
   }
-  
 }

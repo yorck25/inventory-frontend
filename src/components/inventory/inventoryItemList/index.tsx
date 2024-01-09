@@ -40,26 +40,26 @@ export const InventoryItemList = () => {
         ) : (
           <div>
             {groupedList.map((group: any, index: number) => (
-              <div>
-              <div className={style.inventory_list_item}>
-                <div className={style.item_info_container}>
-                  <img className={style.item_image} src={dummyImage} alt="item image" />
-                  <p className={style.item_name}>{group[0].item}</p>
+              <div key={index}>
+                <div className={style.inventory_list_item}>
+                  <div className={style.item_info_container}>
+                    <img className={style.item_image} src={dummyImage} alt="item image" />
+                    <p className={style.item_name}>{group[0].item}</p>
+                  </div>
+                  <button onClick={() => toggleItem(group[0]._id)} className={style.open_detail_button}>
+                    {openItems.includes(group[0]._id) ? 'v' : '^'}
+                  </button>
                 </div>
-                <button onClick={() => toggleItem(group[0]._id)} className={style.open_detail_button}>
-                  {openItems.includes(group[0]._id) ? 'v' : '^'}
-                </button>
+                {openItems.includes(group[0]._id) && (
+                  <div className={style.item_detail_container}>
+                    <ul>
+                      {group.map((item: IItem, index: number) => (
+                        <li key={index}>{item._id} || {item.item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
-              {openItems.includes(group[0]._id) && (
-                <div className={style.item_detail_container}>
-                  <ul>
-                    {group.map((item: IItem, index: number) => (
-                     <li key={index}>{item._id} || {item.item}</li>
-                     ))}
-                  </ul>
-                </div>
-              )}
-            </div>
             ))}
           </div>
         )
