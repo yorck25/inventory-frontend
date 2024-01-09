@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react'
 import { InventoryHeader } from '../../components/inventory/inventoryHeader'
 import { InventoryItemList } from '../../components/inventory/inventoryItemList'
-import { ItemContextProvider, useItemContext } from '../../lib/itemContext';
+import { useItemContext } from '../../lib/itemContext';
 import style from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket, faGear, faWarehouseFull } from '@fortawesome/pro-light-svg-icons';
 
 export const InventoryPage = () => {
   const navigate = useNavigate();
-  const { itemList, setItemList, getItemFromServer } = useItemContext();
+  const { getItemFromServer } = useItemContext();
 
   useEffect(() => {
     getItemFromServer();
   }, [])
 
   const handleNavigate = (path: String) => {
-    navigate(`/${path}`);
+    navigate(`${path}`);
   }
 
   return (
@@ -28,24 +30,28 @@ export const InventoryPage = () => {
 
           <div className={style.navigation_stacks}>
             <ul className={style.top_navigation_list}>
-              <li onClick={() => handleNavigate("/inventory")}>Inventory</li>
-              <li>navigation link</li>
-              <li>navigation link</li>
+              <li className={style.navigation_list_item}
+                  onClick={() => handleNavigate("/inventory")}
+              ><FontAwesomeIcon icon={faWarehouseFull} className={style.icon}/><span>Inventory</span></li>
             </ul>
 
             <ul className={style.bottom_navigation_list}>
-              <li onClick={() => (
-                console.log("logout"),
-                handleNavigate("/login"),
-                localStorage.removeItem("token")
-                )}
-              >logout</li>
+              <li className={style.navigation_list_item}
+                  // onClick={() => handleNavigate("/settings")}
+              ><FontAwesomeIcon icon={faGear} className={style.icon}/><span>Settings</span></li>
+              
+              <li className={style.navigation_list_item}
+                  onClick={() => (
+                      handleNavigate("/login"),
+                      localStorage.removeItem("token")
+              )}
+              ><FontAwesomeIcon icon={faArrowRightFromBracket} className={style.icon}/><span>Logout</span></li>
             </ul>
           </div>
         </div>
         <div className={style.content}>
-          <InventoryHeader />
-          <InventoryItemList />
+          <InventoryHeader/>
+          <InventoryItemList/>
         </div>
       </div>
     </>
