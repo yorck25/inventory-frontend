@@ -4,7 +4,7 @@
 
     .sidebar {
         width: 15vw;
-        background-color: rgb(235, 235, 235);
+        background-color: var(--second-background-color);
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -16,13 +16,21 @@
             justify-content: center;
 
             .logo {
-                margin: 0 25px;
+                height: 20vh;
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                aspect-ratio: 1/1;
-                object-fit: scale-down;
-                background-color: rgb(59, 134, 209);
+                object-fit: contain;
+            }
+
+            @media screen and (max-width: 1300px) and (min-width: 975px) {
+                .logo {
+                    height: 15vh;
+                }
+            }
+
+            @media screen and (max-width: 974px) {
+                .logo {
+                    height: 9vh;
+                }
             }
         }
 
@@ -40,17 +48,18 @@
                 padding: 0;
                 margin: 0;
 
-                .navigation_list_item{
+                .navigation_list_item {
+                    color: var(--black);
                     display: flex;
                     padding: 10px;
                     align-items: center;
 
-                    .icon{
+                    .icon {
                         margin-right: 10px;
                         height: 30px;
                     }
 
-                    span{
+                    span {
                         font-size: 20px;
                     }
                 }
@@ -64,17 +73,18 @@
                 padding: 0;
                 margin-bottom: 25px;
 
-                .navigation_list_item{
+                .navigation_list_item {
+                    color: var(--black);
                     display: flex;
                     padding: 10px;
                     align-items: center;
 
-                    .icon{
+                    .icon {
                         margin-right: 10px;
                         height: 30px;
                     }
 
-                    span{
+                    span {
                         font-size: 20px;
                     }
                 }
@@ -84,5 +94,6 @@
 
     .content {
         width: 85vw;
+        background-color: var(--main-background-color);
     }
 }

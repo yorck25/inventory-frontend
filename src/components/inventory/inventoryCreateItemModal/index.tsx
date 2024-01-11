@@ -20,7 +20,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
         body: JSON.stringify({
             item: itemName,
             buy: Cost,
-            sell: Revenue,
+            sell: Revenue == "" ? 0 : Revenue,
             buyindate: Date_bought,
             selldate: Date_sold,
             memo: memo
@@ -30,7 +30,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
     const saveNewItem = () => {
         setErrorMsg(undefined);
 
-        if (itemName === '' || Cost === '' || Revenue === '' || Date_bought === '' || Date_sold === '' || memo === '') return setErrorMsg("Please fill out all fields");
+        if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
         
         fetch("http://localhost:8080/dev-inventory/item", requestOptions)
             .then(response => {

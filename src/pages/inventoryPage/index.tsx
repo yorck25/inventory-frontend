@@ -6,6 +6,7 @@ import style from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faGear, faWarehouseFull } from '@fortawesome/pro-light-svg-icons';
+import logo from './logo_example_1.png';
 
 export const InventoryPage = () => {
   const navigate = useNavigate();
@@ -24,8 +25,8 @@ export const InventoryPage = () => {
       <div className={style.main_page_desktop}>
         <div className={style.sidebar}>
           <div className={style.logo_container}>
-            <div className={style.logo}>logo contianer</div>
-            {/* <img /> */}
+            {/* <div className={style.logo}>logo contianer</div> */}
+            <img className={style.logo} src={logo}/>
           </div>
 
           <div className={style.navigation_stacks}>

@@ -1,14 +1,14 @@
 .inventory_header{
   height: 7.5vh;
-  background: rgb(255, 0, 0);
+  background: var(--second-background-color);
   display: flex;
   justify-content: end;
   
   .button_add {
     margin-top: 0px;
     padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
+    background-color: var(--blue);
+    color: var(--black);
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -16,7 +16,9 @@
     
   
     &:hover {
-      background-color: #2980b9;
+      background-color: var(--blue);
+      opacity: 0.8;
+      cursor: pointer;
     }
   }
 }

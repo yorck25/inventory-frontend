@@ -3,16 +3,26 @@
 @media (prefers-color-scheme: light) {
     :root {
         --blue: #1e90ff;
-        --backgorund: #ffffff;
         --main-font-color: #000000;
+
+        --white: #ffffff;
+        --black: #000000;
+
+        --main-background-color: #ffffff;
+        --second-background-color: #eaeaea;
       }
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --blue: #1e90ff;
-        --backgorund: #343434;
         --main-font-color: #ffffff;
+
+        --white: #000000;
+        --black: #ffffff;
+
+        --main-background-color: #343434;
+        --second-background-color: #202020;
       }
 }
 
