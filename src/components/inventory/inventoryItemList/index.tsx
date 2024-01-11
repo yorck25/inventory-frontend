@@ -8,9 +8,9 @@ export const InventoryItemList = () => {
   const { itemList } = useItemContext();
   const [groupedList, setGroupedList] = useState<any>([]);
 
-  const [openItems, setOpenItems] = useState<String[]>([]);
+  const [openItems, setOpenItems] = useState<string[]>([]);
 
-  const toggleItem = (id: String) => {
+  const toggleItem = (id: string) => {
     if (openItems.includes(id)) return setOpenItems(openItems.filter((itemId) => itemId !== id));
 
     setOpenItems([...openItems, id]);
@@ -32,6 +32,16 @@ export const InventoryItemList = () => {
     setGroupedList(groupedItems);
   }, [itemList]);
 
+  const getAvarageBuyPrice = (group: IItem[]) => { 
+    let total: number = 0;
+
+    group.forEach((item: IItem) => {
+      total += item.buy;
+    });
+
+    return (total / group.length).toFixed(2);
+  }
+
   return (
     <div className={style.inventory_item_list}>
       {
@@ -44,7 +54,9 @@ export const InventoryItemList = () => {
                 <div className={style.inventory_list_item}>
                   <div className={style.item_info_container}>
                     <img className={style.item_image} src={dummyImage} alt="item image" />
-                    <p className={style.item_name}>{group[0].item}</p>
+                    <p className={style.item_id}>{group[0].item}</p>
+                    <p className={style.item_name}>{group.length}</p>
+                    <p className={style.item_name}>Avarage buy price: {getAvarageBuyPrice(group)}</p>
                   </div>
                   <button onClick={() => toggleItem(group[0]._id)} className={style.open_detail_button}>
                     {openItems.includes(group[0]._id) ? 'v' : '^'}
@@ -54,7 +66,7 @@ export const InventoryItemList = () => {
                   <div className={style.item_detail_container}>
                     <ul>
                       {group.map((item: IItem, index: number) => (
-                        <li key={index}>{item._id} || {item.item}</li>
+                        <li key={index}>{item._id} || {item.item} || {item.buy.toString()}</li>
                       ))}
                     </ul>
                   </div>

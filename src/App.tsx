@@ -2,6 +2,12 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Login from './components/loginSignUp';
 import { InventoryPage } from "./pages/inventoryPage";
 
+export enum Currency{
+    EUR = '€',
+    USD = '$',
+    GBP = '£',
+}
+
 function App() {
     const router = createBrowserRouter(
         createRoutesFromElements([

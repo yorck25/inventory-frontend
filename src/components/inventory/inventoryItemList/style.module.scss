@@ -6,7 +6,7 @@
 
     .inventory_list_item{
         margin: 25px 15px;
-        background-color: rgb(194, 194, 194);
+        background-color: #eeeeee;
         display: flex;
         justify-content: space-between;
         
@@ -18,9 +18,8 @@
             .item_image{
                 margin: 0 25px 0 0px;
                 height: fit-content;
-                width: 50px;
+                width: 75px;
                 aspect-ratio: 1⁄1;
-                
             }
 
             .item_id{

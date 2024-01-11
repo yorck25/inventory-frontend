@@ -16,7 +16,7 @@ export const InventoryPage = () => {
     getItemFromServer();
   }, [])
 
-  const handleNavigate = (path: String) => {
+  const handleNavigate = (path: string) => {
     navigate(`${path}`);
   }
 

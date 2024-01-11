@@ -66,7 +66,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                     <label className={style.label}>
                         Cost:
                         <input className={style.input}
-                            type="Number"
+                            type="number"
                             value={Cost}
                             onChange={(e) => setCost(e.target.value)}
                         />
@@ -74,7 +74,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                     <label className={style.label}>
                         Revenue:
                         <input className={style.input}
-                            type="Number"
+                            type="number"
                             value={Revenue}
                             onChange={(e) => setRevenue(e.target.value)}
                         />
