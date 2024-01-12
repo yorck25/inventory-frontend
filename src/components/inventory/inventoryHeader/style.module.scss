@@ -1,24 +1,57 @@
-.inventory_header{
+.inventory_header {
   height: 7.5vh;
   background: var(--second-background-color);
   display: flex;
-  justify-content: end;
-  
-  .button_add {
-    margin-top: 0px;
-    padding: 10px 20px;
-    background-color: var(--blue);
-    color: var(--black);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    
-  
-    &:hover {
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+
+  .button_add_container {
+    margin: 0 0 0 15px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+
+    .button_add {
+      margin-top: 0px;
+      padding: 10px 20px;
       background-color: var(--blue);
-      opacity: 0.8;
+      color: var(--black);
+      border: none;
+      border-radius: 3px;
       cursor: pointer;
+      transition: 0.1s;
+
+      &:hover {
+        background-color: var(--blue);
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .controll_buttons_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .button_container {
+      margin: 0 10px;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+
+      .button_icon {
+        transition: 0.1s;
+        height: 26px;
+        color: var(--black);
+
+        &:hover {
+          color: var(--blue);
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

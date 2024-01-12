@@ -56,7 +56,7 @@ export const InventoryItemList = () => {
                     <img className={style.item_image} src={dummyImage} alt="item image" />
                     <p className={style.item_id}>{group[0].item}</p>
                     <p className={style.item_name}>{group.length}</p>
-                    <p className={style.item_name}>Avarage buy price: {getAvarageBuyPrice(group)}</p>
+                    <p className={style.item_name}>Ø buy price: {getAvarageBuyPrice(group)}</p>
                   </div>
                   <button onClick={() => toggleItem(group[0]._id)} className={style.open_detail_button}>
                     {openItems.includes(group[0]._id) ? 'v' : '^'}
