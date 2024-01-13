@@ -11,7 +11,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
     const [Date_sold, setDate_sold] = useState('');
     const [memo, setmemo] = useState('');
     const [errorMsg, setErrorMsg] = useState<undefined | string>(undefined);
-    
+
     const requestOptions: RequestInit = {
         method: HTTPMethods.POST,
         headers: GetDefaultHeader(),
@@ -31,7 +31,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
         setErrorMsg(undefined);
 
         if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
-        
+
         fetch("http://localhost:8080/dev-inventory/item", requestOptions)
             .then(response => {
                 if (response.status != 200) return setErrorMsg("Something went wrong");
@@ -97,8 +97,8 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
                     </label>
                     <label className={style.label}>
                         Memo:
-                        <input className={style.input}
-                            type="text"
+                        <textarea className={style.input}
+                            maxLength={100}
                             value={memo}
                             onChange={(e) => setmemo(e.target.value)}
                         />
@@ -106,7 +106,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
 
                 </div>
 
-                <button onClick={() => saveNewItem()} className={style.button}>click me</button>
+                <button onClick={() => saveNewItem()} className={style.button}>add new item</button>
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ import { faBell, faUser } from '@fortawesome/pro-light-svg-icons';
 
 
 export const InventoryHeader = () => {
-  const [isHiddenState, setIsHidden] = useState<boolean>(false);
+  const [isHiddenState, setIsHidden] = useState<boolean>(true);
 
   const toggle = () => setIsHidden(!isHiddenState);
 
