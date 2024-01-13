@@ -1,4 +1,4 @@
-import { faCube, faTally, faCartShopping } from "@fortawesome/pro-light-svg-icons";
+import { faCube, faTally, faCartShopping, faCalendarPlus, faCalendarMinus, faTags } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IItem } from "../../../../models/itemModel"
 import style from './style.module.scss';
@@ -16,7 +16,19 @@ export const DetailTable = ({ group }: { group: IItem[] }) => {
                         <FontAwesomeIcon className={style.header_icon} icon={faTally} /><span>Amount</span>
                     </th>
                     <th className={style.header_row_item}>
-                        <FontAwesomeIcon className={style.header_icon} icon={faCartShopping} /><span>Ø buy price</span>
+                        <FontAwesomeIcon className={style.header_icon} icon={faCartShopping} /><span>Buy price</span>
+                    </th>
+                    <th className={style.header_row_item}>
+                        <FontAwesomeIcon className={style.header_icon} icon={faCalendarPlus} /><span>Buy date</span>
+                    </th>
+                    <th className={style.header_row_item}>
+                        <FontAwesomeIcon className={style.header_icon} icon={faCalendarPlus} /><span>Memo</span>
+                    </th>
+                    <th className={style.header_row_item}>
+                        <FontAwesomeIcon className={style.header_icon} icon={faTags} /><span>Sell price</span>
+                    </th>
+                    <th className={style.header_row_item}>
+                        <FontAwesomeIcon className={style.header_icon} icon={faCalendarMinus} /><span>Sell date</span>
                     </th>
                 </tr>
             </thead>
@@ -28,6 +40,10 @@ export const DetailTable = ({ group }: { group: IItem[] }) => {
                             <td className={style.content_row_item}>{item._id}</td>
                             <td className={style.content_row_item}>{item.item}</td>
                             <td className={style.content_row_item}>{item.buy}</td>
+                            <td className={style.content_row_item}>{item.buyindate}</td>
+                            <td className={style.content_row_item}>{item.memo == "" ? "---" : (item.memo)}</td>
+                            <td className={style.content_row_item}>{item.sell == 0 ? "---" : (item.sell)}</td>
+                            <td className={style.content_row_item}>{item.selldate == "" ? "---" : (item.selldate)}</td>
                         </tr>
                     ))
                 }
