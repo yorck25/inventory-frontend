@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import style from './style.module.scss';
-import { InventoryItemModal } from '../inventoryCreateItemModal';
+import { InventoryItemModal } from '../inventoryItemModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faUser } from '@fortawesome/pro-light-svg-icons';
 

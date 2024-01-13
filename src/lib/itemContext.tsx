@@ -7,6 +7,7 @@ type ItemContextProps = {
     itemList: IItem[] | undefined;
     setItemList: React.Dispatch<React.SetStateAction<IItem[] | undefined>>;
     getItemFromServer: () => void;
+    updateSingleItem: (item: IItem) => void;
 };
 
 const ItemContext = createContext<ItemContextProps | undefined>(undefined);
@@ -26,7 +27,7 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
             redirect: 'follow'
         };
 
-        fetch("http://localhost:8080/dev-inventory/getAllItems", requestOptions)
+        fetch("http://localhost:8080/dev-inventory/get-all-items", requestOptions)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
 
@@ -34,7 +35,7 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
             })
             .then(resValue => {
                 const convertetRes = JSON.parse(resValue);
-                
+
                 setItemList(convertetRes);
             })
             .catch(error => console.error('There was an error:', error));
@@ -42,10 +43,38 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
         return itemList?.length;
     }
 
+    const updateSingleItem = (item: IItem) => {
+        const myheaders = new Headers();
+        myheaders.append("Content-Type", "application/json");
+        myheaders.append("token", getTokenLocalStorage());
+
+        const requestOptions: RequestInit = {
+            method: HTTPMethods.PUT,
+            headers: myheaders,
+            redirect: 'follow',
+            body: JSON.stringify({
+                _id: item._id,
+                item: item.item,
+                buy: item.buy,
+                sell: item.sell,
+                buyindate: item.buyindate,
+                selldate: item.selldate,
+                memo: item.memo,
+            }),
+        };
+
+        fetch("http://localhost:8080/dev-inventory/update-single-item", requestOptions)
+            .then(response => {
+                if (response.status == 200) return getItemFromServer();
+            })
+
+    }
+
     const itemContextValue: ItemContextProps = {
         itemList,
         setItemList,
         getItemFromServer,
+        updateSingleItem,
     };
 
     return (

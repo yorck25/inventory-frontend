@@ -3,8 +3,11 @@ import style from './style.module.scss';
 import { ModalHeader } from '../../modalHeader';
 import { HTTPMethods, GetDefaultHeader } from '../../../lib/networkAdapter';
 import { IItem } from '../../../models/itemModel';
+import { useItemContext } from '../../../lib/itemContext';
 
 export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item: IItem | undefined }) => {
+    const { updateSingleItem, getItemFromServer } = useItemContext();
+
     const [itemName, setItemName] = useState('');
     const [Cost, setCost] = useState('');
     const [Revenue, setRevenue] = useState('');
@@ -42,22 +45,41 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
     const saveNewItem = () => {
         setErrorMsg(undefined);
 
-        if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
+        if (item == undefined) {
+            if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
 
-        fetch("http://localhost:8080/dev-inventory/item", requestOptions)
-            .then(response => {
-                if (response.status != 200) return setErrorMsg("Something went wrong");
+            fetch("http://localhost:8080/dev-inventory/item", requestOptions)
+                .then(response => {
+                    if (response.status != 200) return setErrorMsg("Something went wrong");
 
-                setItemName('');
-                setCost('');
-                setRevenue('');
-                setDate_bought('');
-                setDate_sold('');
-                setmemo('');
+                    setItemName('');
+                    setCost('');
+                    setRevenue('');
+                    setDate_bought('');
+                    setDate_sold('');
+                    setmemo('');
 
-                toggle();
-            })
-            .catch(error => console.log('error', error));
+                    getItemFromServer();
+                    toggle();
+                })
+                .catch(error => console.log('error', error));
+        }
+        else {
+            if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
+
+            updateSingleItem({
+                _id: item._id,
+                item: itemName,
+                buy: Number(Cost),
+                sell: Revenue == "" ? 0 : Number(Revenue),
+                buyindate: Date_bought,
+                selldate: Date_sold,
+                memo: memo,
+                userId: item.userId,
+            });
+
+            toggle();
+        }
     }
 
     return (
@@ -119,7 +141,7 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
                 </div>
 
                 <button onClick={() => saveNewItem()} className={style.button}>{!item ? "add new item" : "save changes"}</button>
-            </div>Í
+            </div>
         </div>
     );
 };

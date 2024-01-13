@@ -8,7 +8,7 @@ import { faChevronDown } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { render } from '@testing-library/react';
 import { FilterHeader } from '../inventoryFilterHeader';
-import { InventoryItemModal } from '../inventoryCreateItemModal';
+import { InventoryItemModal } from '../inventoryItemModal';
 
 export const InventoryItemList = () => {
   const { itemList } = useItemContext();
