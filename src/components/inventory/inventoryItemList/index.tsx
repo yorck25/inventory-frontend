@@ -99,7 +99,7 @@ export const InventoryItemList = () => {
 
   return (
     <>
-      <FilterHeader toggleUnSelled={() => toggleUnSelled()} unSelled={unSelled} />
+      <FilterHeader toggleUnSelled={() => toggleUnSelled()} unSelled={unSelled} unSelectUnSelled={() => setUnSelled(undefined)} />
       <div className={style.inventory_item_list}>
         {
           render?.length === 0 ? (

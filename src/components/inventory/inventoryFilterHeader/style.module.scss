@@ -1,19 +1,53 @@
-.filter_container {
+.filter_header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 15px 20px 15px;
-    padding: 15px 0;
+    flex-direction: column;
     border-bottom: 2px solid rgb(233, 233, 233);
 
-    .filter_button {
-        max-width: 250px;
-        width: 13vw;
-        font-size: large;
-        font-weight: normal;
-        border-radius: 10px;
-        padding: 10px 15px;
-        background-color: transparent;
-        border: 3px solid var(--blue);
+    .filter_button_container {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        margin: 0 15px 20px 15px;
+        padding: 15px 0;
+
+        .filter_button {
+            max-width: 250px;
+            width: 13vw;
+            font-size: large;
+            font-weight: normal;
+            border-radius: 10px;
+            padding: 10px 15px;
+            background-color: transparent;
+            border: 3px solid var(--blue);
+        }
+    }
+
+    .filter_overview_contianer {
+        display: flex;
+        margin-bottom: 10px;
+
+        .overview_item {
+            display: flex;
+            align-items: center;
+
+            color: rgb(154, 154, 154);
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 2.5px 0;
+
+            p {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+
+            button {
+                font-size: 11px;
+                margin: 0 5px;
+                background-color: transparent;
+                border-radius: 50px;
+                height: 22px;
+                aspect-ratio: 1/1;
+            }
+        }
     }
 }
