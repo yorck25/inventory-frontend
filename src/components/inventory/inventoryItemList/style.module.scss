@@ -1,39 +1,43 @@
-.inventory_item_list{
-    margin: 25px 0;
+.inventory_item_list {
+    margin: 0px 0;
     background-color: rgb(255, 255, 255);
-    
 
-
-    .inventory_list_item{
-        margin: 25px 15px;
+    .inventory_list_item {
+        margin: 20px 15px 0 15px;
         background-color: #eeeeee;
         display: flex;
         justify-content: space-between;
-    
-        .item_info_container{
+
+        .item_info_container {
             display: flex;
-            
-            .item_image{
+
+            .item_image {
                 margin: 0 25px 0 0px;
                 height: fit-content;
                 width: 75px;
                 aspect-ratio: 1⁄1;
             }
 
-            .item_id{
+            .item_id {
                 margin-left: 10px;
-                
+
             }
 
-            .item_name{
+            .item_name {
                 margin-left: 10px;
-                
+
             }
         }
 
-        .open_detail_button{
+        .open_detail_button {
             margin: 0 15px;
-            
+
         }
+    }
+
+    .item_detail_container {
+        padding: 10px 25px;
+        margin: 0px 15px;
+        background-color: rgb(233, 233, 233);
     }
 }

@@ -3,10 +3,11 @@ import dummyImage from './2188303_P.webp';
 import { useEffect, useState } from 'react';
 import { useItemContext } from '../../../lib/itemContext';
 import { IItem } from '../../../models/itemModel';
+import { DetailTable } from './itemDetailsTable';
 
 export const InventoryItemList = () => {
   const { itemList } = useItemContext();
-  const [groupedList, setGroupedList] = useState<any>([]);
+  const [groupedList, setGroupedList] = useState<IItem[]>([]);
 
   const [openItems, setOpenItems] = useState<string[]>([]);
 
@@ -32,7 +33,7 @@ export const InventoryItemList = () => {
     setGroupedList(groupedItems);
   }, [itemList]);
 
-  const getAvarageBuyPrice = (group: IItem[]) => { 
+  const getAvarageBuyPrice = (group: IItem[]) => {
     let total: number = 0;
 
     group.forEach((item: IItem) => {
@@ -40,7 +41,7 @@ export const InventoryItemList = () => {
     });
 
     return (total / group.length).toFixed(2);
-  }
+  };
 
   return (
     <div className={style.inventory_item_list}>
@@ -64,11 +65,7 @@ export const InventoryItemList = () => {
                 </div>
                 {openItems.includes(group[0]._id) && (
                   <div className={style.item_detail_container}>
-                    <ul>
-                      {group.map((item: IItem, index: number) => (
-                        <li key={index}>{item._id} || {item.item} || {item.buy.toString()}</li>
-                      ))}
-                    </ul>
+                    <DetailTable key={index} group={group} />
                   </div>
                 )}
               </div>
