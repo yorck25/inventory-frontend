@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useItemContext } from '../../../lib/itemContext';
 import { IItem } from '../../../models/itemModel';
 import { DetailTable } from './itemDetailsTable';
+import { faArrowDown, faChevronDoubleUp, faChevronDown } from '@fortawesome/pro-light-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const InventoryItemList = () => {
   const { itemList } = useItemContext();
@@ -60,11 +62,11 @@ export const InventoryItemList = () => {
                     <p className={style.item_name}>Ø buy price: {getAvarageBuyPrice(group)}</p>
                   </div>
                   <button onClick={() => toggleItem(group[0]._id)} className={style.open_detail_button}>
-                    {openItems.includes(group[0]._id) ? 'v' : '^'}
+                    <FontAwesomeIcon icon={faChevronDown} className={openItems.includes(group[0]._id) ? style.toggle_icon_down : style.toggle_icon_up} />
                   </button>
                 </div>
                 {openItems.includes(group[0]._id) && (
-                  <div className={style.item_detail_container}>
+                  <div className={style.item_detail_container} >
                     <DetailTable key={index} group={group} />
                   </div>
                 )}
