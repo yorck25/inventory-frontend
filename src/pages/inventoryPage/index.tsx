@@ -26,33 +26,33 @@ export const InventoryPage = () => {
         <div className={style.sidebar}>
           <div className={style.logo_container}>
             {/* <div className={style.logo}>logo contianer</div> */}
-            <img className={style.logo} src={logo}/>
+            <img className={style.logo} src={logo} />
           </div>
 
           <div className={style.navigation_stacks}>
             <ul className={style.top_navigation_list}>
               <li className={style.navigation_list_item}
-                  onClick={() => handleNavigate("/inventory")}
-              ><FontAwesomeIcon icon={faWarehouseFull} className={style.icon}/><span>Inventory</span></li>
+                onClick={() => handleNavigate("/inventory")}
+              ><FontAwesomeIcon icon={faWarehouseFull} className={style.icon} /><span>Inventory</span></li>
             </ul>
 
             <ul className={style.bottom_navigation_list}>
               <li className={style.navigation_list_item}
-                  // onClick={() => handleNavigate("/settings")}
-              ><FontAwesomeIcon icon={faGear} className={style.icon}/><span>Settings</span></li>
-              
+              // onClick={() => handleNavigate("/settings")}
+              ><FontAwesomeIcon icon={faGear} className={style.icon} /><span>Settings</span></li>
+
               <li className={style.navigation_list_item}
-                  onClick={() => (
-                      handleNavigate("/login"),
-                      localStorage.removeItem("token")
-              )}
-              ><FontAwesomeIcon icon={faArrowRightFromBracket} className={style.icon}/><span>Logout</span></li>
+                onClick={() => (
+                  handleNavigate("/login"),
+                  localStorage.removeItem("token")
+                )}
+              ><FontAwesomeIcon icon={faArrowRightFromBracket} className={style.icon} /><span>Logout</span></li>
             </ul>
           </div>
         </div>
         <div className={style.content}>
-          <InventoryHeader/>
-          <InventoryItemList/>
+          <InventoryHeader />
+          <InventoryItemList />
         </div>
       </div>
     </>
