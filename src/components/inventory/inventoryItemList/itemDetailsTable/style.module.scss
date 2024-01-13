@@ -33,6 +33,17 @@
 
             .content_row_item {
                 font-size: 18px;
+
+                .edit_button {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+
+                    .icon {
+                        height: 22px;
+                        aspect-ratio: 1⁄1;
+                    }
+                }
             }
         }
     }

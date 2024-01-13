@@ -8,14 +8,20 @@ import { faChevronDown } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { render } from '@testing-library/react';
 import { FilterHeader } from '../inventoryFilterHeader';
+import { InventoryItemModal } from '../inventoryCreateItemModal';
 
 export const InventoryItemList = () => {
   const { itemList } = useItemContext();
+  const [openItems, setOpenItems] = useState<string[]>(["65a29ca9e1425accdeff745e"]);
+  const [openEditModal, setOpenEditModal] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<IItem | null>(null);
+
+  //list with the items
   const [groupedList, setGroupedList] = useState<IItem[]>([]);
-  const [openItems, setOpenItems] = useState<string[]>([]);
   const [renderlist, setRenderList] = useState<IItem[]>([]);
 
-  const [unSelled, setUnSelled] = useState<boolean | undefined>(true);
+  //filter atributes
+  const [unSelled, setUnSelled] = useState<boolean | undefined>(undefined);
 
   const toggleItem = (id: string) => {
     if (openItems.includes(id)) return setOpenItems(openItems.filter((itemId) => itemId !== id));
@@ -77,12 +83,19 @@ export const InventoryItemList = () => {
     return (total / group.length).toFixed(2);
   };
 
+  const openEditModalHandler = (item: IItem) => {
+    setSelectedItem(item);
+    setOpenEditModal(true);
+  }
+
   const toggleUnSelled = () => {
     setOpenItems([]);
     if (unSelled === undefined) return setUnSelled(true);
     if (unSelled === true) return setUnSelled(false);
     if (unSelled === false) return setUnSelled(undefined);
   }
+
+  const toggle = () => setOpenEditModal(!openEditModal);
 
   return (
     <>
@@ -111,7 +124,7 @@ export const InventoryItemList = () => {
                         </div>
                         {openItems.includes(group[0]._id) && (
                           <div className={style.item_detail_container} >
-                            <DetailTable key={index} group={group} />
+                            <DetailTable key={index} group={group} openEditModalHandler={openEditModalHandler} />
                           </div>
                         )}
                       </div>
@@ -123,6 +136,12 @@ export const InventoryItemList = () => {
           )
         }
       </div>
+
+      {
+        openEditModal && (
+          <InventoryItemModal toggle={() => toggle()} item={selectedItem!} />
+        )
+      }
     </>
   );
 };

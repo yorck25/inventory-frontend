@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './style.module.scss';
 import { ModalHeader } from '../../modalHeader';
 import { HTTPMethods, GetDefaultHeader } from '../../../lib/networkAdapter';
+import { IItem } from '../../../models/itemModel';
 
-export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => {
+export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item: IItem | undefined }) => {
     const [itemName, setItemName] = useState('');
     const [Cost, setCost] = useState('');
     const [Revenue, setRevenue] = useState('');
@@ -11,6 +12,17 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
     const [Date_sold, setDate_sold] = useState('');
     const [memo, setmemo] = useState('');
     const [errorMsg, setErrorMsg] = useState<undefined | string>(undefined);
+
+    useEffect(() => {
+        if (!item) return;
+
+        setItemName(item.item);
+        setCost(item.buy.toString());
+        setRevenue(item.sell.toString());
+        setDate_bought(item.buyindate);
+        setDate_sold(item.selldate);
+        setmemo(item.memo);
+    }, [item]);
 
     const requestOptions: RequestInit = {
         method: HTTPMethods.POST,
@@ -52,7 +64,7 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
         <div className={style.inventory_create_modal}>
             <div onClick={() => toggle()} className={style.modal_blocker} />
             <div className={style.content}>
-                <ModalHeader title={"Create new Item"} toggleFunc={() => toggle()} />
+                <ModalHeader title={!item ? "Create new Item" : "Edit Item"} toggleFunc={() => toggle()} />
                 {errorMsg && <p>{errorMsg}</p>}
                 <div className={style.block}>
                     <label className={style.label} >
@@ -106,8 +118,8 @@ export const InventoryCreateItemModal = ({ toggle }: { toggle: () => void }) => 
 
                 </div>
 
-                <button onClick={() => saveNewItem()} className={style.button}>add new item</button>
-            </div>
+                <button onClick={() => saveNewItem()} className={style.button}>{!item ? "add new item" : "save changes"}</button>
+            </div>Í
         </div>
     );
 };
