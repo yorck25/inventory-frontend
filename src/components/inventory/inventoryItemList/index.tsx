@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useItemContext } from '../../../lib/itemContext';
 import { IItem } from '../../../models/itemModel';
 import { DetailTable } from './itemDetailsTable';
-import { faArrowDown, faChevronDoubleUp, faChevronDown } from '@fortawesome/pro-light-svg-icons';
+import { faChevronDown } from '@fortawesome/pro-light-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { render } from '@testing-library/react';
+import { FilterHeader } from '../inventoryFilterHeader';
 
 export const InventoryItemList = () => {
   const { itemList } = useItemContext();
@@ -45,6 +46,7 @@ export const InventoryItemList = () => {
 
     if (unSelled != undefined) {
       const newGroups: any = [];
+
       groupedList.forEach((group: any) => {
 
         const filterList: IItem[] = [];
@@ -61,7 +63,6 @@ export const InventoryItemList = () => {
         newGroups.push(group);
       });
 
-      console.log(newGroups);
       setRenderList(newGroups);
     }
   }, [groupedList])
@@ -77,6 +78,7 @@ export const InventoryItemList = () => {
   };
 
   const toggleUnSelled = () => {
+    setOpenItems([]);
     if (unSelled === undefined) return setUnSelled(true);
     if (unSelled === true) return setUnSelled(false);
     if (unSelled === false) return setUnSelled(undefined);
@@ -84,12 +86,7 @@ export const InventoryItemList = () => {
 
   return (
     <>
-      <div>
-        <p>Filter</p>
-        <button onClick={() => toggleUnSelled()}>
-          Show Selled
-        </button>
-      </div>
+      <FilterHeader toggleUnSelled={() => toggleUnSelled()} unSelled={unSelled} />
       <div className={style.inventory_item_list}>
         {
           render?.length === 0 ? (
@@ -97,7 +94,7 @@ export const InventoryItemList = () => {
           ) : (
             <div>
               {renderlist.map((group: any, index: number) => (
-                <>
+                <div key={index}>
                   {
                     group.length > 0 && (
                       <div key={index}>
@@ -120,7 +117,7 @@ export const InventoryItemList = () => {
                       </div>
                     )
                   }
-                </>
+                </div>
               ))}
             </div>
           )
