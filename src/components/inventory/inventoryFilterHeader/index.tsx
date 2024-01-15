@@ -23,16 +23,14 @@ export const FilterHeader = ({
                 </button>
             </div>
             <div className={style.filter_overview_contianer}>
-                <div className={style.overview_item}>
-                    {
-                        unSelled !== undefined && (
-                            <>
-                                <button onClick={() => unSelectUnSelled()}>X</button>
-                                <p>selled status</p>
-                            </>
-                        )
-                    }
-                </div>
+                {
+                    unSelled !== undefined && (
+                        <div className={style.overview_item}>
+                            <button onClick={() => unSelectUnSelled()}>X</button>
+                            <p>selled status</p>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )

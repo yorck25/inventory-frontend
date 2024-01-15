@@ -48,9 +48,9 @@ export const InventoryItemList = () => {
   }, [itemList, unSelled]);
 
   useEffect(() => {
-    if (unSelled === undefined) setRenderList(groupedList);
+    if (unSelled === undefined) return setRenderList(groupedList);
 
-    if (unSelled != undefined) {
+    if (unSelled !== undefined) {
       const newGroups: any = [];
 
       groupedList.forEach((group: any) => {
