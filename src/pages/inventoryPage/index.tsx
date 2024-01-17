@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faGear, faWarehouseFull } from '@fortawesome/pro-light-svg-icons';
 import logo from './logo_example_1.png';
+import { ItemSearchInputField } from '../settings';
 
 export const InventoryPage = () => {
   const navigate = useNavigate();

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useItemContext } from "../../lib/itemContext";
 import { IItem } from "../../models/itemModel";
 import style from './style.module.scss';
+import { render } from "@testing-library/react";
 
 export const SettingsPage = () => {
     interface ICurrenyModel {
@@ -80,15 +81,19 @@ export const ItemSearchInputField = () => {
                 onChange={(e: any) => setValue(e.target.value)}
                 type="text" placeholder="Enter your name"
             />
-            <div className={style.matching_item_container}>
-                {
-                    renderList?.map(item => (
-                        <div key={item._id}>
-                            <p>{item.item}</p>
-                        </div>
-                    ))
-                }
-            </div >
+            {
+                renderList?.length > 0 && (
+                    <div className={style.matching_item_container}>
+                        {
+                            renderList.map(item => (
+                                <div key={item._id}>
+                                    <p>{item.item}</p>
+                                </div>
+                            ))
+                        }
+                    </div >
+                )
+            }
         </div>
     )
 }

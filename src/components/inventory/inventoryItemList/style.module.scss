@@ -1,15 +1,17 @@
 .inventory_item_list {
     margin: 0px 0;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--main-background-color);
 
     .inventory_list_item {
         margin: 20px 15px 0 15px;
-        background-color: #eeeeee;
+        background-color: var(--item-background);
         display: flex;
         justify-content: space-between;
 
         .item_info_container {
             display: flex;
+            align-items: center;
+            color: var(--black);
 
             .item_image {
                 margin: 0 25px 0 0px;
@@ -31,13 +33,18 @@
 
         .open_detail_button {
             margin: 0 15px;
+            border: none;
+            background-color: transparent;
+            color: var(--black);
 
             .toggle_icon_up {
+                height: 25px;
                 transform: rotate(0deg);
                 transition: transform 0.1s ease-in-out;
             }
 
             .toggle_icon_down {
+                height: 25px;
                 transform: rotate(180deg);
                 transition: transform 0.1s ease-in-out;
             }
@@ -47,7 +54,7 @@
     .item_detail_container {
         padding: 10px 25px;
         margin: 0px 15px;
-        background-color: rgb(233, 233, 233);
+        background-color: var( --item-background);
         animation: openDetail 0.2s ease-in-out;
     }
 }

@@ -4,6 +4,7 @@ import { ModalHeader } from '../../modalHeader';
 import { HTTPMethods, GetDefaultHeader } from '../../../lib/networkAdapter';
 import { IItem } from '../../../models/itemModel';
 import { useItemContext } from '../../../lib/itemContext';
+import { ItemSearchInputField } from '../../../pages/settings';
 
 export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item: IItem | undefined }) => {
     const { updateSingleItem, getItemFromServer } = useItemContext();
