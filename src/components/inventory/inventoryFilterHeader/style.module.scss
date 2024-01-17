@@ -12,8 +12,8 @@
 
         .filter_button {
             max-width: 250px;
-            width: 13vw;
-            font-size: large;
+            width: 12vw;
+            font-size: 18px;
             font-weight: normal;
             border-radius: 10px;
             padding: 10px 15px;
@@ -25,13 +25,16 @@
     .filter_overview_contianer {
         display: flex;
         margin-bottom: 10px;
+        margin-left: 15px;
 
         .overview_item {
             display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
             align-items: center;
 
             color: rgb(154, 154, 154);
-            border: 1px solid black;
+            border: 1px solid rgb(206, 206, 206);
             border-radius: 10px;
             padding: 2.5px 0;
 
@@ -43,10 +46,12 @@
             button {
                 font-size: 11px;
                 margin: 0 5px;
-                background-color: transparent;
+                background-color: rgb(231, 231, 231);
+                border: transparent;
                 border-radius: 50px;
                 height: 22px;
                 aspect-ratio: 1/1;
+                color: rgb(57, 57, 57);
             }
         }
     }

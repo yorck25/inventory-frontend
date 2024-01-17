@@ -27,7 +27,7 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
             redirect: 'follow'
         };
 
-        fetch("http://localhost:8080/dev-inventory/get-all-items", requestOptions)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/get-all-items`, requestOptions)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
 
@@ -63,7 +63,7 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
             }),
         };
 
-        fetch("http://localhost:8080/dev-inventory/update-single-item", requestOptions)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/update-single-item`, requestOptions)
             .then(response => {
                 if (response.status == 200) return getItemFromServer();
             })

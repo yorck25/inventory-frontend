@@ -18,7 +18,7 @@ export const FilterHeader = ({
                     {
                         unSelled === undefined ? ("filter only selled")
                             : unSelled === true ? ("fliter only unselled")
-                                : ("filter selled and unselled")
+                                : ("none")
                     }
                 </button>
             </div>

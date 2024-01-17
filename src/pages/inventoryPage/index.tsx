@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { InventoryHeader } from '../../components/inventory/inventoryHeader'
 import { InventoryItemList } from '../../components/inventory/inventoryItemList'
 import { useItemContext } from '../../lib/itemContext';
@@ -25,7 +25,6 @@ export const InventoryPage = () => {
       <div className={style.main_page_desktop}>
         <div className={style.sidebar}>
           <div className={style.logo_container}>
-            {/* <div className={style.logo}>logo contianer</div> */}
             <img className={style.logo} src={logo} />
           </div>
 
@@ -38,7 +37,7 @@ export const InventoryPage = () => {
 
             <ul className={style.bottom_navigation_list}>
               <li className={style.navigation_list_item}
-              // onClick={() => handleNavigate("/settings")}
+                onClick={() => handleNavigate("/settings")}
               ><FontAwesomeIcon icon={faGear} className={style.icon} /><span>Settings</span></li>
 
               <li className={style.navigation_list_item}

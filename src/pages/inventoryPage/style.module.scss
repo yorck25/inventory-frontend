@@ -4,6 +4,7 @@
 
     .sidebar {
         width: 15vw;
+        max-width: 250px;
         background-color: var(--second-background-color);
         display: flex;
         flex-direction: column;
@@ -49,6 +50,7 @@
                 margin: 0;
 
                 .navigation_list_item {
+                    cursor: pointer;
                     color: var(--black);
                     display: flex;
                     padding: 10px;
@@ -78,6 +80,7 @@
                     display: flex;
                     padding: 10px;
                     align-items: center;
+                    cursor: pointer;
 
                     .icon {
                         margin-right: 10px;
@@ -93,7 +96,7 @@
     }
 
     .content {
-        width: 85vw;
+        width: 100%;
         background-color: var(--main-background-color);
     }
 }

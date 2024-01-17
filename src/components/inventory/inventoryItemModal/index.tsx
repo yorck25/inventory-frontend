@@ -48,7 +48,7 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
         if (item == undefined) {
             if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
 
-            fetch("http://localhost:8080/dev-inventory/item", requestOptions)
+            fetch(`${process.env.REACT_APP_API_BASE_URL}/item`, requestOptions)
                 .then(response => {
                     if (response.status != 200) return setErrorMsg("Something went wrong");
 

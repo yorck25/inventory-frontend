@@ -27,7 +27,7 @@ const Login = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
-    fetch("http://localhost:8080/dev-inventory/login", requestOptions)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/login`, requestOptions)
   .then(response => {
     if (!response.ok) throw new Error('Network response was not ok');
 
