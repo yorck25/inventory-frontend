@@ -14,8 +14,6 @@ export const RegistrationPage = () => {
     const [passwordRepeat, setPasswordReapeat] = useState<string>('');
 
     const handleRegistration = () => {
-        console.log("hello world")
-        console.log(process.env.REACT_APP_API_BASE_URL);
         const myheaders = new Headers();
         myheaders.append("Content-Type", "application/json");
 

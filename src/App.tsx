@@ -3,11 +3,12 @@ import { LoginPage } from './pages/login';
 import { InventoryPage } from "./pages/inventoryPage";
 import { SettingsPage } from './pages/settings';
 import { RegistrationPage } from './pages/registration';
+import { Loading } from './pages/Loading';
 
 function App() {
     const router = createBrowserRouter(
         createRoutesFromElements([
-            <Route path='/' element={<LoginPage />} />,
+            <Route path='/' element={<Loading />} />,
             <Route path='/inventory' element={<InventoryPage />} />,
             <Route path='/login' element={<LoginPage />} />,
             <Route path='/registration' element={<RegistrationPage />} />,
