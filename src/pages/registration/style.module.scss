@@ -1,0 +1,34 @@
+.registration_page {
+    background-color: red;
+    height: 100vh;
+    background-color: var(--main-background-color);
+
+    h2 {
+        padding: 0;
+        margin: 0;
+        color: var(--black);
+    }
+
+    .registration_form {
+        display: flex;
+        flex-direction: column;
+
+        .description {
+            color: var(--main-font-color);
+            margin: 15px 0 5px 0;
+        }
+
+        .input_field {
+            background-color: var(--item-background);
+            height: 30px;
+            max-width: 250px;
+            border: 1px solid var(--black);
+            border-radius: 7.5px;
+            color: var(--main-font-color);
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}

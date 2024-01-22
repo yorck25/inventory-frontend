@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { useHelperContext } from '../../lib/helperContext';
 
-const Login = () => {
+export const LoginPage = () => {
   const navigate = useNavigate();
   const { setToken, setTokenLocalStorage } = useHelperContext();
 
@@ -68,8 +68,9 @@ const Login = () => {
 
         <button className={styles.button_submit} type="submit">Login</button>
       </form>
+      <div>
+        <p onClick={() => navigate('/registration')}>Don´t have an account? Click here</p>
+      </div>
     </div>
   );
 };
-
-export default Login;
