@@ -28,14 +28,14 @@ export const LoginPage = () => {
     e.preventDefault();
     
     fetch(`${process.env.REACT_APP_API_BASE_URL}/login`, requestOptions)
-  .then(response => {
-    if (!response.ok) throw new Error('Network response was not ok');
+  .then(rawResponse => {
+    if (!rawResponse.ok) throw new Error('Network response was not ok');
 
-    return response.text();
+    return rawResponse.json();
   })
-  .then(token => {
-    setTokenLocalStorage(token);
-    setToken(token);
+  .then(res => {
+    setTokenLocalStorage(res.token);
+    setToken(res.token);
     navigate('/inventory');
   })
   .catch(error => console.error('There was an error:', error));

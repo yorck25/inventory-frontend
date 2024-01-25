@@ -8,7 +8,6 @@ export enum HTTPMethods {
 }
 
 export const GetDefaultHeader = () => {
-    const { getTokenLocalStorage } = useHelperContext();
 
     const myHeaders = new Headers();
     myHeaders.append("token", getTokenLocalStorage());
@@ -16,3 +15,9 @@ export const GetDefaultHeader = () => {
 
     return myHeaders;
 }
+
+const getTokenLocalStorage = () => {
+    const token = localStorage.getItem('token');
+    if (token != null) return token;
+    return '';
+};

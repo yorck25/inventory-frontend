@@ -7,7 +7,7 @@ export const Loading = () => {
     useEffect(() => {
         try {
             const token = localStorage.getItem('token');
-            if (token) return navigate('/inventory');
+            if (token) return navigate('/main');
 
             navigate('/login');
         }
@@ -15,6 +15,7 @@ export const Loading = () => {
             navigate('/login');
         }
     }, [])
+
     return (
         <h1>Loading...</h1>
     )
