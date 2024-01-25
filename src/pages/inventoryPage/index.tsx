@@ -16,18 +16,12 @@ export const InventoryPage = () => {
   }, [orgaId])
 
   return (
-    <>
-      <div className={style.main_page_desktop}>
-        <Sidebar />
-        <div className={style.content}>
-          <InventoryHeader />
-          <InventoryItemList />
-        </div>
+    <div className={style.main_page_desktop}>
+      <Sidebar />
+      <div className={style.content}>
+        <InventoryHeader />
+        <InventoryItemList />
       </div>
-    </>
+    </div>
   )
-}
-
-function getTokenLocalStorage(): string {
-  throw new Error('Function not implemented.');
 }

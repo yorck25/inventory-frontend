@@ -1,0 +1,9 @@
+.main_page_desktop {
+    display: flex;
+    height: 100vh;
+
+    .content {
+        width: 100%;
+        background-color: var(--main-background-color);
+    }
+}
