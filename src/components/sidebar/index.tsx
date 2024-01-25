@@ -16,7 +16,7 @@ export const Sidebar = () => {
 
     useEffect(() => {
         getUserOrgs();
-    });
+    }, []);
 
     interface IOrga {
         id: string;
@@ -45,17 +45,14 @@ export const Sidebar = () => {
             </div>
 
             <div className={style.navigation_stacks}>
-                <div className={style.navigation_list_item}
-                    onClick={() => handleNavigate(`/settings`)}
-                >
-                    <FontAwesomeIcon icon={faGear} className={style.icon} />
-                    <span>Mainpage</span>
-                </div>
-
                 <ul className={style.top_navigation_list}>
+                    <li className={style.navigation_list_item}
+                        onClick={() => handleNavigate(`/main`)}
+                    ><span>Mainpage</span></li>
+
                     {userOrags?.map((org) =>
                         <li key={org.id} className={style.navigation_list_item}
-                            onClick={() => handleNavigate(`/inventory/:${org.id}`)}
+                            onClick={() => handleNavigate(`/inventory?id=${org.id}`)}
                         >
                             <h3 className={style.navigation_orga_name}>{org.name}</h3>
                             <ul className={style.navigation_orga_options}>

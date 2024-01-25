@@ -7,7 +7,7 @@ import { useItemContext } from '../../../lib/itemContext';
 import { ItemSearchInputField } from '../../../pages/settings';
 
 export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item: IItem | undefined }) => {
-    const { updateSingleItem, getItemFromServer } = useItemContext();
+    const { updateSingleItem, getItemFromServer, orgaId } = useItemContext();
 
     const [itemName, setItemName] = useState('');
     const [Cost, setCost] = useState('');
@@ -60,7 +60,7 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
                     setDate_sold('');
                     setmemo('');
 
-                    getItemFromServer();
+                    getItemFromServer(orgaId!);
                     toggle();
                 })
                 .catch(error => console.log('error', error));

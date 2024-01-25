@@ -6,8 +6,10 @@ import { useHelperContext } from './helperContext';
 type ItemContextProps = {
     itemList: IItem[] | undefined;
     setItemList: React.Dispatch<React.SetStateAction<IItem[] | undefined>>;
-    getItemFromServer: () => void;
+    getItemFromServer: (orgaId: string) => void;
     updateSingleItem: (item: IItem) => void;
+    orgaId: string | undefined;
+    setOrgaId: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
 const ItemContext = createContext<ItemContextProps | undefined>(undefined);
@@ -15,10 +17,15 @@ const ItemContext = createContext<ItemContextProps | undefined>(undefined);
 export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [itemList, setItemList] = useState<IItem[] | undefined>(undefined);
     const { getTokenLocalStorage } = useHelperContext();
+    const [orgaId, setOrgaId] = useState<string | undefined>(undefined);
 
-    const getItemFromServer = () => {
+    const getItemFromServer = (orgaId: string) => {
+        setOrgaId(orgaId);
+
+        console.log(orgaId);
         const myheaders = new Headers();
         myheaders.append("Content-Type", "application/json");
+        myheaders.append("orgaid", orgaId);
         myheaders.append("token", getTokenLocalStorage());
 
         const requestOptions: RequestInit = {
@@ -65,7 +72,7 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
 
         fetch(`${process.env.REACT_APP_API_BASE_URL}/update-single-item`, requestOptions)
             .then(response => {
-                if (response.status == 200) return getItemFromServer();
+                if (response.status == 200) return getItemFromServer(orgaId!);
             })
 
     }
@@ -75,6 +82,8 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
         setItemList,
         getItemFromServer,
         updateSingleItem,
+        orgaId,
+        setOrgaId,
     };
 
     return (

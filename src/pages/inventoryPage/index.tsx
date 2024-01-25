@@ -11,7 +11,11 @@ export const InventoryPage = () => {
   const { getItemFromServer } = useItemContext();
 
   useEffect(() => {
-    getItemFromServer();
+    const urlParams = new URLSearchParams(window.location.search);
+    const orgaId: string | null = urlParams.get('id');
+
+    console.log(orgaId);
+    getItemFromServer(orgaId!);
   }, [])
 
   return (

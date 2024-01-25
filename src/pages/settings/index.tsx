@@ -5,6 +5,7 @@ import style from './style.module.scss';
 import { render } from "@testing-library/react";
 
 export const SettingsPage = () => {
+    const { orgaId } = useItemContext();
     interface ICurrenyModel {
         id: number;
         displayName: string;
@@ -38,7 +39,7 @@ export const SettingsPage = () => {
     const { getItemFromServer } = useItemContext();
 
     useEffect(() => {
-        getItemFromServer();
+        getItemFromServer(orgaId!);
     }, [])
 
     return (
