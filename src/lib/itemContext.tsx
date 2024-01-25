@@ -22,7 +22,6 @@ export const ItemContextProvider: FC<{ children: ReactNode }> = ({ children }) =
     const getItemFromServer = (orgaId: string) => {
         setOrgaId(orgaId);
 
-        console.log(orgaId);
         const myheaders = new Headers();
         myheaders.append("Content-Type", "application/json");
         myheaders.append("orgaid", orgaId);

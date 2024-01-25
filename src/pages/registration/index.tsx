@@ -30,11 +30,11 @@ export const RegistrationPage = () => {
 
         fetch(`${process.env.REACT_APP_API_BASE_URL}/registration`, requestOptions)
             .then(rawres => {
-                if (!rawres.ok) return console.log('Network response was not ok');
+                if (!rawres.ok) return;
 
                 return rawres.json();
             }).then(res => {
-                if (!res.token) return console.log('No token in response');
+                if (!res.token) return;
 
                 setTokenLocalStorage(res.token);
                 setToken(res.token);

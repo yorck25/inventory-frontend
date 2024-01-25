@@ -4,7 +4,6 @@ import { ModalHeader } from '../../modalHeader';
 import { HTTPMethods, GetDefaultHeader } from '../../../lib/networkAdapter';
 import { IItem } from '../../../models/itemModel';
 import { useItemContext } from '../../../lib/itemContext';
-import { ItemSearchInputField } from '../../../pages/settings';
 
 export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item: IItem | undefined }) => {
     const { updateSingleItem, getItemFromServer, orgaId } = useItemContext();
@@ -28,9 +27,12 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
         setmemo(item.memo);
     }, [item]);
 
+    const headers = GetDefaultHeader();
+    headers.append('orgaid', orgaId!);
+
     const requestOptions: RequestInit = {
         method: HTTPMethods.POST,
-        headers: GetDefaultHeader(),
+        headers: headers,
 
         redirect: 'follow',
         body: JSON.stringify({
@@ -63,7 +65,7 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
                     getItemFromServer(orgaId!);
                     toggle();
                 })
-                .catch(error => console.log('error', error));
+                .catch(error => { return });
         }
         else {
             if (itemName === '' || Cost === '' || Date_bought === '') return setErrorMsg("Please fill out all fields");
@@ -76,7 +78,7 @@ export const InventoryItemModal = ({ toggle, item }: { toggle: () => void, item:
                 buyindate: Date_bought,
                 selldate: Date_sold,
                 memo: memo,
-                userId: item.userId,
+                orgaId: orgaId!,
             });
 
             toggle();

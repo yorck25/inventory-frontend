@@ -6,5 +6,5 @@ export interface IItem {
     buyindate: string
     selldate: string
     memo: string
-    userId: string
+    orgaId: string
 }

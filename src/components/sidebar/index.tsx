@@ -5,13 +5,16 @@ import { faArrowRightFromBracket, faGear, faWarehouseFull } from '@fortawesome/p
 import logo from '../../pages/inventoryPage/logo_example_1.png';
 import { useEffect, useState } from 'react';
 import { GetDefaultHeader, HTTPMethods } from '../../lib/networkAdapter';
+import { useItemContext } from '../../lib/itemContext';
 
 export const Sidebar = () => {
     const navigate = useNavigate();
+    const { orgaId, setOrgaId } = useItemContext();
     const [userOrags, setUserOrgs] = useState<IOrga[] | undefined>(undefined);
 
     const handleNavigate = (path: string) => {
         navigate(`${path}`);
+        setOrgaId(userOrags?.[0]?.id ? "1" : "0");
     }
 
     useEffect(() => {
@@ -32,7 +35,7 @@ export const Sidebar = () => {
 
         fetch(`${process.env.REACT_APP_API_BASE_URL}/user-orgas`, requestOptions)
             .then(rawResponse => {
-                if (rawResponse.status !== 200) return console.log("fail");
+                if (rawResponse.status !== 200) return;
 
                 return rawResponse.json();
             }).then((res) => setUserOrgs(res))
