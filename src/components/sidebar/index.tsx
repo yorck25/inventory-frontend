@@ -10,6 +10,8 @@ import { useItemContext } from '../../lib/itemContext';
 export const Sidebar = () => {
     const navigate = useNavigate();
     const { orgaId, setOrgaId } = useItemContext();
+    const [openOrgas, setOpenOrgas] = useState<number[]>([]);
+    const urlParams = new URLSearchParams(window.location.search);
     const [userOrags, setUserOrgs] = useState<IOrga[] | undefined>(undefined);
 
     const handleNavigate = (path: string) => {
@@ -53,21 +55,34 @@ export const Sidebar = () => {
                         onClick={() => handleNavigate(`/main`)}
                     ><span>Mainpage</span></li>
 
-                    {userOrags?.map((org) =>
+                    {userOrags?.map((org, index) =>
                         <li key={org.id} className={style.navigation_list_item}
                             onClick={() => handleNavigate(`/inventory?id=${org.id}`)}
                         >
-                            <h3 className={style.navigation_orga_name}>{org.name}</h3>
-                            <ul className={style.navigation_orga_options}>
-                                <li className={style.navigation_orga_options_inventory}>
-                                    <FontAwesomeIcon icon={faWarehouseFull} className={style.icon} />
-                                    <span>Inventory</span>
-                                </li>
-                                <li className={style.navigation_orga_options_inventory}>
-                                    <FontAwesomeIcon icon={faGear} className={style.icon} />
-                                    <span>Settings</span>
-                                </li>
-                            </ul>
+                            <div className={urlParams.get('id') === org.id ? `${style.header} ${style.active}` : style.header}>
+                                <h3 className={style.navigation_orga_name}>{org.name}</h3>
+                                <button className={style.toggle_button} onClick={() => {
+                                    openOrgas.includes(index)
+                                        ? setOpenOrgas(openOrgas.filter((item) => item !== index))
+                                        : setOpenOrgas([...openOrgas, index])
+                                }}>
+                                    <FontAwesomeIcon icon={faArrowRightFromBracket} className={style.icon} />
+                                </button>
+                            </div>
+                            {
+                                openOrgas.includes(index) && (
+                                    <ul className={style.navigation_orga_options}>
+                                        <li className={style.navigation_orga_options_inventory}>
+                                            <FontAwesomeIcon icon={faWarehouseFull} className={style.icon} />
+                                            <span>Inventory</span>
+                                        </li>
+                                        <li className={style.navigation_orga_options_inventory}>
+                                            <FontAwesomeIcon icon={faGear} className={style.icon} />
+                                            <span>Settings</span>
+                                        </li>
+                                    </ul>
+                                )
+                            }
                         </li>
                     )}
                 </ul>

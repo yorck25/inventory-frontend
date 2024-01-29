@@ -56,8 +56,21 @@
                     font-size: 20px;
                 }
 
-                .navigation_orga_name {
-                    color: var(--main-font-color);
+                .header {
+                    display: flex;
+                    flex-direction: row;
+
+                    .navigation_orga_name {
+                        color: var(--main-font-color);
+                    }
+
+                    .toggle_button {
+                        color: var(--blue);
+                    }
+                }
+
+                .active{
+                    background-color: aqua;
                 }
 
                 .navigation_orga_options {
