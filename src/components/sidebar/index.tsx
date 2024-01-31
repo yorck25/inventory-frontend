@@ -1,7 +1,7 @@
 import style from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket, faGear, faWarehouseFull } from '@fortawesome/pro-light-svg-icons';
+import { faArrowRightFromBracket, faChevronDown, faGear, faRight, faWarehouseFull } from '@fortawesome/pro-light-svg-icons';
 import logo from '../../pages/inventoryPage/logo_example_1.png';
 import { useEffect, useState } from 'react';
 import { GetDefaultHeader, HTTPMethods } from '../../lib/networkAdapter';
@@ -9,7 +9,7 @@ import { useItemContext } from '../../lib/itemContext';
 
 export const Sidebar = () => {
     const navigate = useNavigate();
-    const { orgaId, setOrgaId } = useItemContext();
+    const { setOrgaId } = useItemContext();
     const [openOrgas, setOpenOrgas] = useState<number[]>([]);
     const urlParams = new URLSearchParams(window.location.search);
     const [userOrags, setUserOrgs] = useState<IOrga[] | undefined>(undefined);
@@ -51,14 +51,14 @@ export const Sidebar = () => {
 
             <div className={style.navigation_stacks}>
                 <ul className={style.top_navigation_list}>
-                    <li className={style.navigation_list_item}
+                    <li className={style.navigation_list_item_main}
                         onClick={() => handleNavigate(`/main`)}
                     ><span>Mainpage</span></li>
 
+                    <li className={style.divider} />
+
                     {userOrags?.map((org, index) =>
-                        <li key={org.id} className={style.navigation_list_item}
-                            onClick={() => handleNavigate(`/inventory?id=${org.id}`)}
-                        >
+                        <li key={org.id} className={style.navigation_list_item}>
                             <div className={urlParams.get('id') === org.id ? `${style.header} ${style.active}` : style.header}>
                                 <h3 className={style.navigation_orga_name}>{org.name}</h3>
                                 <button className={style.toggle_button} onClick={() => {
@@ -66,13 +66,16 @@ export const Sidebar = () => {
                                         ? setOpenOrgas(openOrgas.filter((item) => item !== index))
                                         : setOpenOrgas([...openOrgas, index])
                                 }}>
-                                    <FontAwesomeIcon icon={faArrowRightFromBracket} className={style.icon} />
+                                    <FontAwesomeIcon icon={faChevronDown} className={style.icon} style={{ rotate: openOrgas.includes(index) ? "0deg" : "270deg" }} />
                                 </button>
                             </div>
                             {
                                 openOrgas.includes(index) && (
                                     <ul className={style.navigation_orga_options}>
-                                        <li className={style.navigation_orga_options_inventory}>
+                                        <li
+                                            className={style.navigation_orga_options_inventory}
+                                            onClick={() => handleNavigate(`/inventory?id=${org.id}`)}
+                                        >
                                             <FontAwesomeIcon icon={faWarehouseFull} className={style.icon} />
                                             <span>Inventory</span>
                                         </li>

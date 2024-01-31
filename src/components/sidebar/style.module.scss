@@ -37,6 +37,12 @@
         flex-direction: column;
         justify-content: space-between;
 
+        .divider {
+            background-color: var(--divider-color);
+            height: 1px;
+            margin: 10px 15px;
+        }
+
         .top_navigation_list {
             list-style: none;
             display: flex;
@@ -45,12 +51,24 @@
             padding: 0;
             margin: 0;
 
-            .navigation_list_item {
+            .navigation_list_item_main {
                 flex-direction: column;
                 cursor: pointer;
                 color: var(--black);
                 display: flex;
                 align-items: center;
+
+                span {
+                    font-size: 20px;
+                }
+            }
+
+            .navigation_list_item {
+                margin-left: 20px;
+                flex-direction: column;
+                cursor: pointer;
+                color: var(--black);
+                display: flex;
 
                 span {
                     font-size: 20px;
@@ -66,11 +84,19 @@
 
                     .toggle_button {
                         color: var(--blue);
+                        background-color: transparent;
+                        border: none;
+
+                        .icon {
+                            height: 25px;
+                        }
                     }
                 }
 
-                .active{
-                    background-color: aqua;
+                .active {
+                    .navigation_orga_name {
+                        color: var(--blue);
+                    }
                 }
 
                 .navigation_orga_options {
