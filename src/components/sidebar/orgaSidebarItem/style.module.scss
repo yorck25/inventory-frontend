@@ -1,0 +1,55 @@
+.navigation_list_item {
+    margin-left: 20px;
+    flex-direction: column;
+    cursor: pointer;
+    color: var(--black);
+    display: flex;
+
+    span {
+        font-size: 20px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+
+        .navigation_orga_name {
+            color: var(--main-font-color);
+        }
+
+        .toggle_button {
+            color: var(--blue);
+            background-color: transparent;
+            border: none;
+
+            .icon {
+                height: 25px;
+            }
+        }
+    }
+
+    .active {
+        .navigation_orga_name {
+            color: var(--blue);
+        }
+    }
+
+    .navigation_orga_options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        .navigation_orga_options_inventory {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+
+            .icon {
+                margin: 0 15px 0 0;
+                color: var(--blue);
+            }
+        }
+    }
+}
